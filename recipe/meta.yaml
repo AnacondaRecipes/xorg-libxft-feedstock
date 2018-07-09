@@ -31,9 +31,9 @@ requirements:
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
   host:
-    - xorg-libx11 1.6.*
+    - pthread-stubs
     - xorg-util-macros
-    - xorg-libpthread-stubs
+    - xorg-libx11 1.6.*
     - xorg-libxrender 0.9.*
     - freetype
     - fontconfig

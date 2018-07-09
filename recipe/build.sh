@@ -39,6 +39,14 @@ if [ -n "$CYGWIN_PREFIX" ] ; then
     export LDFLAGS="$LDFLAGS -L$platlibs"
 fi
 
+if [[ "$(uname)" = Darwin ]] ; then
+    # Temporary workaround for mistaken fontconfig 2.13.0-1 pkg-config file --
+    # it wants there to be a uuid.pc available, but links to the system
+    # libuuid.
+    export FONTCONFIG_CFLAGS="-I$PREFIX/include/freetype2 -I$PREFIX/include/libxml2 -I$PREFIX/include"
+    export FONTCONFIG_LIBS="-L$PREFIX/lib -lfontconfig -lfreetype"
+fi
+    
 export PKG_CONFIG_LIBDIR=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
 configure_args=(
     --prefix=$mprefix

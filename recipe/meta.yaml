@@ -1,8 +1,8 @@
 {% set xorg_name = "libXft" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "2.3.2" %}
-{% set sha256 = "f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c" %}
+{% set version = "2.3.3" %}
+{% set sha256 = "225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -15,7 +15,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1003
+  number: 0
   detect_binary_files_with_prefix: true
   # required fontconfig is not available on windows:
   skip: True  # [win]

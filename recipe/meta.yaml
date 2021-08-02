@@ -1,8 +1,8 @@
 {% set xorg_name = "libXft" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "2.3.3" %}
-{% set sha256 = "225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216" %}
+{% set version = "2.3.4" %}
+{% set sha256 = "57dedaab20914002146bdae0cb0c769ba3f75214c4c91bd2613d6ef79fc9abdd" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -17,7 +17,7 @@ build:
   number: 0
   detect_binary_files_with_prefix: true
   # required fontconfig is not available on windows:
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -52,15 +52,13 @@ test:
     - if not exist %PREFIX%/Library/lib/lib{{ lib_ident }}.dll.a exit /b 1  # [win]
     - if not exist %PREFIX%/Library/bin/msys-{{ lib_ident }}-*.dll exit /b 1  # [win]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX $PKG_NAME
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://www.x.org/
   license: MIT
   license_family: MIT
   license_file: COPYING
-  summary: 'The X.org FreeType library.'
+  summary: The X.org FreeType library.
 
 extra:
   recipe-maintainers:

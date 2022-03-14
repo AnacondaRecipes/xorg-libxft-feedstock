@@ -14,9 +14,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
-  # required fontconfig is not available on windows:
+  # Would need some library futzing to get the build fully working on Windows:
   skip: true  # [win]
 
 requirements:

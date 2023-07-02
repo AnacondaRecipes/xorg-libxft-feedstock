@@ -1,8 +1,8 @@
 {% set xorg_name = "libXft" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "2.3.4" %}
-{% set sha256 = "57dedaab20914002146bdae0cb0c769ba3f75214c4c91bd2613d6ef79fc9abdd" %}
+{% set version = "2.3.8" %}
+{% set sha256 = "5e8c3c4bc2d4c0a40aef6b4b38ed2fb74301640da29f6528154b5009b1c6dd49" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -10,11 +10,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
+  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.xz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   # Would need some library futzing to get the build fully working on Windows:
   skip: true  # [win]
@@ -33,13 +33,8 @@ requirements:
   host:
     - pthread-stubs
     - xorg-util-macros
-    - xorg-libx11 1.6.*
-    - xorg-libxrender 0.9.*
-    - freetype
-    - fontconfig
-  run:
-    - xorg-libx11 1.6.*
-    - xorg-libxrender 0.9.*
+    - xorg-libx11
+    - xorg-libxrender
     - freetype
     - fontconfig
 

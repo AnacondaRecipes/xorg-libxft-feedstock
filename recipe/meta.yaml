@@ -37,6 +37,8 @@ requirements:
     - xorg-libxrender
     - freetype
     - fontconfig
+    # Required by freetype at build time
+    - zlib
   run:
     # To remove this, we need to wait for
     # https://github.com/conda-forge/xorg-libxrender-feedstock/pull/9

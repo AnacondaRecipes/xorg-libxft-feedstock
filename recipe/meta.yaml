@@ -41,7 +41,7 @@ requirements:
     # To remove this, we need to wait for
     # https://github.com/conda-forge/xorg-libxrender-feedstock/pull/9
     # But I (hmaarrfk) am a little impatient
-    - {{ pin_compatible('xorg-libxrender') }}
+    - {{ pin_compatible('xorg-libxrender', max_pin='x.x') }}
 
 test:
   commands:

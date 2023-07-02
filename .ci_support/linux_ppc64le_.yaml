@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
+- '12'
 cdt_name:
 - cos7
 channel_sources:
@@ -11,13 +11,8 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 fontconfig:
-- '2.13'
+- '2'
 freetype:
 - '2'
-pin_run_as_build:
-  fontconfig:
-    max_pin: x
-  freetype:
-    max_pin: x
 target_platform:
 - linux-ppc64le

@@ -42,6 +42,7 @@ requirements:
     - fontconfig
     # Required by freetype at build time
     - zlib
+    - expat
 
 test:
   commands:

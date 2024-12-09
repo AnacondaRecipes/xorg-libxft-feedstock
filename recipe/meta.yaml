@@ -33,6 +33,7 @@ requirements:
     - {{ compiler('m2w64_c') }}  # [win]
     - make  # [unix]
   host:
+    - xorg-xorgproto
     - pthread-stubs
     - xorg-util-macros
     - xorg-libx11

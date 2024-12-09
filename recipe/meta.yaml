@@ -18,6 +18,8 @@ build:
   detect_binary_files_with_prefix: true
   # Would need some library futzing to get the build fully working on Windows:
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage(name|lower, max_pin='x.x') }}
 
 requirements:
   build:
@@ -39,11 +41,6 @@ requirements:
     - fontconfig
     # Required by freetype at build time
     - zlib
-  run:
-    # To remove this, we need to wait for
-    # https://github.com/conda-forge/xorg-libxrender-feedstock/pull/9
-    # But I (hmaarrfk) am a little impatient
-    - {{ pin_compatible('xorg-libxrender', max_pin='x.x') }}
 
 test:
   commands:

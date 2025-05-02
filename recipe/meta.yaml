@@ -47,9 +47,6 @@ requirements:
     - xorg-libxrender
     - freetype
     - fontconfig
-    # Required by freetype at build time
-    - zlib
-    - expat
 
 test:
   commands:

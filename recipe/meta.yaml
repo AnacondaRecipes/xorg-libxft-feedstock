@@ -3,7 +3,6 @@
 {% set name = "xorg-" ~ xorg_name %}
 {% set version = "2.3.9" %}
 {% set sha256 = "60a25b78945ed6932635b3bb1899a517d31df7456e69867ffba27f89ff3976f5" %}
-{% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
   name: {{ name|lower }}
@@ -15,6 +14,7 @@ source:
 
 build:
   number: 0
+  # xorg-libxdmcp, libxcb, libx11, libice aren't available on Windows because their dependencies clash with m2/msys2 and mingw64/ucrt64 toolchains.
   # Would need some library futzing to get the build fully working on Windows:
   skip: true  # [win]
   run_exports:
@@ -31,10 +31,8 @@ requirements:
     - m2-base                      # [win]
     - make                         # [unix]
     - m2-make                      # [win]
-    - {{ stdlib('c') }}            # [unix]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}          # [unix]
-    - {{ stdlib('m2w64_c') }}      # [win]
     - {{ compiler('m2w64_c') }}    # [win]
     - autoconf                     # [unix]
     - automake                     # [unix]
@@ -49,22 +47,21 @@ requirements:
     - xorg-libxrender
     - freetype
     - fontconfig
-    # Required by freetype at build time
-    - zlib
-    - expat
 
 test:
   commands:
     {% set lib_idents = [ "Xft" ] %}
     {% for lib_ident in lib_idents %}
     - test -f $PREFIX/lib/lib{{ lib_ident }}.dylib  # [osx]
-    - test -f $PREFIX/lib/lib{{ lib_ident }}.so  # [linux]
+    - test -f $PREFIX/lib/lib{{ lib_ident }}.so     # [linux]
     - if not exist %PREFIX%/Library/lib/lib{{ lib_ident }}.dll.a exit /b 1  # [win]
     - if not exist %PREFIX%/Library/bin/msys-{{ lib_ident }}-*.dll exit /b 1  # [win]
     {% endfor %}
 
 about:
   home: https://www.x.org/
+  dev_url: https://gitlab.freedesktop.org/xorg/lib/libxft
+  doc_url: https://gitlab.freedesktop.org/xorg/lib/libxft
   license: MIT
   license_family: MIT
   license_file: COPYING

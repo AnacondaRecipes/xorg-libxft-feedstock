@@ -51,7 +51,7 @@ about:
   license_family: MIT
   license_file: COPYING
   summary: The X.org FreeType library.
-  description: The X.org FreeType library.
+  description: The X.org FreeType library
 
 extra:
   recipe-maintainers:
